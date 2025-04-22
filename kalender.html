@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>kalender | nutrilife</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.3/main.min.css">
+    <style>
+        :root {
+            --primary-color: #4e73df;
+            --secondary-color: #f8f9fc;
+            --accent-color: #2e59d9;
+        }
+        
+        body {
+            font-family: 'Nunito', sans-serif;
+            background-color: #f8f9fc;
+        }
+        
+        .calendar-container {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 0.15rem 1.75rem 0 rgba(58, 59, 69, 0.1);
+            padding: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .fc-header-toolbar {
+            margin-bottom: 1em !important;
+        }
+        
+        .fc-toolbar-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+        }
+        
+        .fc-button {
+            background-color: var(--primary-color) !important;
+            border: none !important;
+            padding: 0.4em 1em !important;
+        }
+        
+        .fc-button:hover {
+            background-color: var(--accent-color) !important;
+        }
+        
+        .fc-button-active {
+            background-color: var(--accent-color) !important;
+        }
+        
+        .fc-daygrid-event {
+            border-radius: 4px;
+            padding: 2px 5px;
+            font-size: 0.85em;
+        }
+        
+        .fc-event-title {
+            white-space: normal;
+        }
+        
+        .fc-day-today {
+            background-color: rgba(78, 115, 223, 0.1) !important;
+        }
+        
+        .event-dot {
+            display: inline-block;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            margin-right: 5px;
+        }
+        
+        .event-meeting {
+            background-color: #4e73df;
+        }
+        
+        .event-deadline {
+            background-color: #e74a3b;
+        }
+        
+        .event-birthday {
+            background-color: #f6c23e;
+        }
+        
+        .event-holiday {
+            background-color: #1cc88a;
+        }
+        
+        .add-event-btn {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 8px 15px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        .add-event-btn:hover {
+            background-color: var(--accent-color);
+        }
+    </style>
+</head>
+<body>
+    <div class="container-fluid mt-4">
+        <div class="row">
+            <div class="col-lg-8">
+                <div class="calendar-container">
+                    <div id="calendar"></div>
+                </div>
+            </div>
+            
+            <div class="col-lg-4">
+                <div class="card shadow mb-4">
+                    <div class="card-header py-3 d-flex justify-content-between align-items-center">
+                        <h6 class="m-0 font-weight-bold text-primary">daftar acara</h6>
+                        <button class="btn btn-sm btn-primary" id="addEventBtn">
+                            <i class="fas fa-plus"></i> tambah acara
+                        </button>
+                    </div>
+                    <div class="card-body">
+                        <div class="upcoming-events">
+                            <h6 class="text-muted mb-3">hari ini</h6>
+                            
+                            <div class="event-item mb-3">
+                                <div class="d-flex align-items-center">
+                                    <span class="event-dot event-meeting"></span>
+                                    <div>
+                                        <h6 class="mb-0">rapat tim</h6>
+                                        <small class="text-muted">10:00 - 11:30 | ruang meeting 1</small>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="event-item mb-3">
+                                <div class="d-flex align-items-center">
+                                    <span class="event-dot event-deadline"></span>
+                                    <div>
+                                        <h6 class="mb-0">batas proyek</h6>
+                                        <small class="text-muted">deadline pukul 23:59</small>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <hr>
+                            
+                            <h6 class="text-muted mb-3">besok</h6>
+                            
+                            <div class="event-item mb-3">
+                                <div class="d-flex align-items-center">
+                                    <span class="event-dot event-birthday"></span>
+                                    <div>
+                                        <h6 class="mb-0">anniversary team 1</h6>
+                                        <small class="text-muted">seluruh hari</small>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="event-item mb-3">
+                                <div class="d-flex align-items-center">
+                                    <span class="event-dot event-meeting"></span>
+                                    <div>
+                                        <h6 class="mb-0">presentasi klien</h6>
+                                        <small class="text-muted">14:00 - 15:30 | ruang meeting 2</small>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <hr>
+                            
+                            <h6 class="text-muted mb-3">minggu depan</h6>
+                            
+                            <div class="event-item mb-3">
+                                <div class="d-flex align-items-center">
+                                    <span class="event-dot event-holiday"></span>
+                                    <div>
+                                        <h6 class="mb-0">hari libur nasional</h6>
+                                        <small class="text-muted">seluruh hari</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="card shadow">
+                    <div class="card-header py-3">
+                        <h6 class="m-0 font-weight-bold text-primary">tambah acara baru</h6>
+                    </div>
+                    <div class="card-body">
+                        <form id="eventForm">
+                            <div class="mb-3">
+                                <label for="eventTitle" class="form-label">judul acara</label>
+                                <input type="text" class="form-control" id="eventTitle" required>
+                            </div>
+                            
+                            <div class="mb-3">
+                                <label for="eventType" class="form-label">jenis acara</label>
+                                <select class="form-select" id="eventType" required>
+                                    <option value="meeting">rapat</option>
+                                    <option value="deadline">deadline</option>
+                                    <option value="birthday">anniversary</option>
+                                    <option value="holiday">liburan</option>
+                                    <option value="other">lainnya</option>
+                                </select>
+                            </div>
+                            
+                            <div class="row mb-3">
+                                <div class="col-md-6">
+                                    <label for="startDate" class="form-label">tanggal mulai</label>
+                                    <input type="date" class="form-control" id="startDate" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="startTime" class="form-label">waktu mulai</label>
+                                    <input type="time" class="form-control" id="startTime">
+                                </div>
+                            </div>
+                            
+                            <div class="row mb-3">
+                                <div class="col-md-6">
+                                    <label for="endDate" class="form-label">tanggal selesai</label>
+                                    <input type="date" class="form-control" id="endDate">
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="endTime" class="form-label">waktu selesai</label>
+                                    <input type="time" class="form-control" id="endTime">
+                                </div>
+                            </div>
+                            
+                            <div class="mb-3">
+                                <label for="eventDescription" class="form-label">deskripsi</label>
+                                <textarea class="form-control" id="eventDescription" rows="3"></textarea>
+                            </div>
+                            
+                            <div class="mb-3 form-check">
+                                <input type="checkbox" class="form-check-input" id="allDay">
+                                <label class="form-check-label" for="allDay">sepanjang hari</label>
+                            </div>
+                            <div style="display: flex; gap: 10px; margin-top: 20px;">
+    <a href="beranda.html" style="flex: 1; text-decoration: none;">
+        <button type="button" style="width: 100%; padding: 10px; background: #6c757d; color: white; border: none; border-radius: 5px; cursor: pointer;">
+            <i class="fas fa-home"></i> kembali ke beranda
+        </button>
+    </a>
+    <button type="submit" style="flex: 1; padding: 10px; background: #4e73df; color: white; border: none; border-radius: 5px; cursor: pointer;">
+        <i class="fas fa-save"></i> simpan acara
+    </button>
+</div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Modal for Event Details -->
+    <div class="modal fade" id="eventModal" tabindex="-1" aria-labelledby="eventModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="eventModalLabel">detail acara</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body" id="eventModalBody">
+                    <!-- Event details will be inserted here -->
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">tutup</button>
+                    <button type="button" class="btn btn-danger" id="deleteEventBtn">hapus acara</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.3/main.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.3/locales/id.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialize calendar
+            var calendarEl = document.getElementById('calendar');
+            var calendar = new FullCalendar.Calendar(calendarEl, {
+                initialView: 'dayGridMonth',
+                locale: 'id',
+                headerToolbar: {
+                    left: 'prev,next today',
+                    center: 'title',
+                    right: 'dayGridMonth,timeGridWeek,timeGridDay'
+                },
+                events: [
+                    {
+                        title: 'rapat tim',
+                        start: new Date(),
+                        end: new Date(new Date().setHours(new Date().getHours() + 1)),
+                        color: '#4e73df',
+                        extendedProps: {
+                            description: 'rapat rutin tim untuk membahas progress proyek',
+                            location: 'ruang meeting 1',
+                            type: 'meeting'
+                        }
+                    },
+                    {
+                        title: 'batas proyek',
+                        start: new Date(),
+                        allDay: true,
+                        color: '#e74a3b',
+                        extendedProps: {
+                            description: 'batas akhir pengumpulan proyek klien A',
+                            type: 'deadline'
+                        }
+                    },
+                    {
+                        title: 'aniversary team 1',
+                        start: new Date(new Date().setDate(new Date().getDate() + 1)),
+                        allDay: true,
+                        color: '#f6c23e',
+                        extendedProps: {
+                            description: 'aniversar anggota tim 1',
+                            type: 'birthday'
+                        }
+                    },
+                    {
+                        title: 'presentasi klien',
+                        start: new Date(new Date().setDate(new Date().getDate() + 1)),
+                        end: new Date(new Date(new Date().setDate(new Date().getDate() + 1)).setHours(14, 30)),
+                        color: '#4e73df',
+                        extendedProps: {
+                            description: 'presentesai proyek baru untuk klien B',
+                            location: 'ruang meeting 2',
+                            type: 'meeting'
+                        }
+                    },
+                    {
+                        title: 'hari libur nasional',
+                        start: new Date(new Date().setDate(new Date().getDate() + 7)),
+                        allDay: true,
+                        color: '#1cc88a',
+                        extendedProps: {
+                            description: 'libur nasional - kantor tutup',
+                            type: 'holiday'
+                        }
+                    }
+                ],
+                eventClick: function(info) {
+                    var event = info.event;
+                    var eventType = event.extendedProps.type || 'other';
+                    var typeText = '';
+                    var icon = '';
+                    
+                    switch(eventType) {
+                        case 'meeting':
+                            typeText = 'rapat';
+                            icon = '<i class="fas fa-users me-2"></i>';
+                            break;
+                        case 'deadline':
+                            typeText = 'deadline';
+                            icon = '<i class="fas fa-flag-checkered me-2"></i>';
+                            break;
+                        case 'aniversary':
+                            typeText = 'aniversary';
+                            icon = '<i class="fas fa-birthday-cake me-2"></i>';
+                            break;
+                        case 'holiday':
+                            typeText = 'liburan';
+                            icon = '<i class="fas fa-umbrella-beach me-2"></i>';
+                            break;
+                        default:
+                            typeText = 'acara';
+                            icon = '<i class="fas fa-calendar-alt me-2"></i>';
+                    }
+                    
+                    var modalBody = `
+                        <div class="mb-3">
+                            <h5>${event.title}</h5>
+                            <span class="badge bg-primary">${typeText}</span>
+                        </div>
+                        
+                        <div class="mb-3">
+                            ${icon}
+                            <strong>Waktu:</strong> ${event.allDay ? 'sepanjang hari' : 
+                                event.start.toLocaleString('id-ID', { 
+                                    weekday: 'long', 
+                                    day: 'numeric', 
+                                    month: 'long', 
+                                    year: 'numeric',
+                                    hour: '2-digit', 
+                                    minute: '2-digit' 
+                                }) + (event.end ? 
+                                    ' - ' + event.end.toLocaleString('id-ID', { 
+                                        hour: '2-digit', 
+                                        minute: '2-digit' 
+                                    }) : '')}
+                        </div>
+                    `;
+                    
+                    if (event.extendedProps.location) {
+                        modalBody += `
+                            <div class="mb-3">
+                                <i class="fas fa-map-marker-alt me-2"></i>
+                                <strong>Lokasi:</strong> ${event.extendedProps.location}
+                            </div>
+                        `;
+                    }
+                    
+                    if (event.extendedProps.description) {
+                        modalBody += `
+                            <div class="mb-3">
+                                <i class="fas fa-align-left me-2"></i>
+                                <strong>deskripsi:</strong>
+                                <p>${event.extendedProps.description}</p>
+                            </div>
+                        `;
+                    }
+                    
+                    document.getElementById('eventModalBody').innerHTML = modalBody;
+                    
+                    // Store event id for deletion
+                    document.getElementById('deleteEventBtn').setAttribute('data-event-id', event.id);
+                    
+                    var eventModal = new bootstrap.Modal(document.getElementById('eventModal'));
+                    eventModal.show();
+                },
+                dateClick: function(info) {
+                    // Set the clicked date in the form
+                    document.getElementById('startDate').value = info.dateStr;
+                    document.getElementById('endDate').value = info.dateStr;
+                    
+                    // Focus on the title field
+                    document.getElementById('eventTitle').focus();
+                }
+            });
+            
+            calendar.render();
+            
+            // Handle event form submission
+            document.getElementById('eventForm').addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                var title = document.getElementById('eventTitle').value;
+                var type = document.getElementById('eventType').value;
+                var startDate = document.getElementById('startDate').value;
+                var startTime = document.getElementById('startTime').value;
+                var endDate = document.getElementById('endDate').value;
+                var endTime = document.getElementById('endTime').value;
+                var description = document.getElementById('eventDescription').value;
+                var allDay = document.getElementById('allDay').checked;
+                
+                           
+                var eventColor;
+                switch(type) {
+                    case 'meeting': eventColor = '#4e73df'; break;
+                    case 'deadline': eventColor = '#e74a3b'; break;
+                    case 'birthday': eventColor = '#f6c23e'; break;
+                    case 'holiday': eventColor = '#1cc88a'; break;
+                    default: eventColor = '#858796';
+                }
+                
+                var start = allDay ? startDate : startDate + 'T' + startTime;
+                var end = allDay ? endDate : (endDate && endTime ? endDate + 'T' + endTime : null);
+                
+                calendar.addEvent({
+                    title: title,
+                    start: start,
+                    end: end,
+                    allDay: allDay,
+                    color: eventColor,
+                    extendedProps: {
+                        description: description,
+                        type: type
+                    }
+                });
+                
+                // Reset form
+                this.reset();
+                
+                // Show success message
+                alert('acara berhasil ditambahkan ke kalender!');
+            });
+            
+            // Handle all day checkbox change
+            document.getElementById('allDay').addEventListener('change', function() {
+                if (this.checked) {
+                    document.getElementById('startTime').disabled = true;
+                    document.getElementById('endTime').disabled = true;
+                } else {
+                    document.getElementById('startTime').disabled = false;
+                    document.getElementById('endTime').disabled = false;
+                }
+            });
+            
+            // Handle delete event button
+            document.getElementById('deleteEventBtn').addEventListener('click', function() {
+                var eventId = this.getAttribute('data-event-id');
+                var event = calendar.getEventById(eventId);
+                
+                if (event) {
+                    event.remove();
+                    bootstrap.Modal.getInstance(document.getElementById('eventModal')).hide();
+                    alert('acara berhasil dihapus!');
+                }
+            });
+            
+            // Set default time for new events
+            var now = new Date();
+            var hours = now.getHours().toString().padStart(2, '0');
+            var minutes = now.getMinutes().toString().padStart(2, '0');
+            document.getElementById('startTime').value = `${hours}:${minutes}`;
+            document.getElementById('endTime').value = `${(parseInt(hours) + 1).toString().padStart(2, '0')}:${minutes}`;
+            
+            // Set default date for new events
+            var today = new Date().toISOString().split('T')[0];
+            document.getElementById('startDate').value = today;
+            document.getElementById('endDate').value = today;
+        });
+    </script>
+</body>
+</html>

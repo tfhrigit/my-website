@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>tugas bootstrap | tedi fahri</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome untuk ikon -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .task-card {
+            transition: transform 0.3s;
+        }
+        .task-card:hover {
+            transform: translateY(-5px);
+        }
+        .profile-img {
+            width: 150px;
+            height: 150px;
+            object-fit: cover;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <i class="fas fa-tasks me-2"></i>tugas bootstrap 
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="beranda.html">rumah</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="tugas.html">tugas</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="-">tentang</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Header -->
+    <header id="home" class="bg-light py-5">
+        <div class="container text-center">
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    <h1 class="display-4 fw-bold">tugas bootstrap</h1>
+                    <p class="lead">membuat halaman web responsif menggunakan framework bootstrap 5</p>
+                    <a href="#tugas" class="btn btn-primary btn-lg mt-3">lihat tugas</a>
+                </div>
+                <div class="col-md-6">
+                    <img src="https://via.placeholder.com/500x300" alt="Ilustrasi Bootstrap" class="img-fluid rounded">
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Daftar Tugas -->
+    <section id="tugas" class="py-5">
+        <div class="container">
+            <h2 class="text-center mb-5">daftar tugas</h2>
+            
+            <div class="row g-4">
+                <!-- Tugas 1 -->
+                <div class="col-md-4">
+                    <div class="card task-card h-100">
+                        <div class="card-header bg-success text-white">
+                            <h5 class="card-title mb-0">tugas 1</h5>
+                        </div>
+                        <div class="card-body">
+                            <h6 class="card-subtitle mb-2 text-muted">layout dengan grid</h6>
+                            <p class="card-text">membuat layout halaman menggunakan sistem grid bootstrap dengan 3 kolom pada desktop dan 1 kolom pada mobile.</p>
+                            <ul class="list-group list-group-flush mb-3">
+                                <li class="list-group-item">deadline: 15 april 2025</li>
+                                <li class="list-group-item">status: selesai</li>
+                            </ul>
+                        </div>
+                        <div class="card-footer bg-transparent">
+                            <a href="#" class="btn btn-outline-success">detail tugas</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Tugas 2 -->
+                <div class="col-md-4">
+                    <div class="card task-card h-100">
+                        <div class="card-header bg-warning text-dark">
+                            <h5 class="card-title mb-0">tugas 2</h5>
+                        </div>
+                        <div class="card-body">
+                            <h6 class="card-subtitle mb-2 text-muted">komponen navbar</h6>
+                            <p class="card-text">membuat navbar responsif dengan dropdown menu dan form pencarian menggunakan komponen navbar bootstrap.</p>
+                            <ul class="list-group list-group-flush mb-3">
+                                <li class="list-group-item">deadline: 22 april 2025</li>
+                                <li class="list-group-item">status: dalam proses</li>
+                            </ul>
+                        </div>
+                        <div class="card-footer bg-transparent">
+                            <a href="#" class="btn btn-outline-warning">detail tugas</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Tugas 3 -->
+                <div class="col-md-4">
+                    <div class="card task-card h-100">
+                        <div class="card-header bg-danger text-white">
+                            <h5 class="card-title mb-0">tugas 3</h5>
+                        </div>
+                        <div class="card-body">
+                            <h6 class="card-subtitle mb-2 text-muted">form validasi</h6>
+                            <p class="card-text">membuat form dengan validasi client-side menggunakan Bootstrap dan javascript.</p>
+                            <ul class="list-group list-group-flush mb-3">
+                                <li class="list-group-item">deadline: 29 april 2025</li>
+                                <li class="list-group-item">status: belum dimulai</li>
+                            </ul>
+                        </div>
+                        <div class="card-footer bg-transparent">
+                            <a href="#" class="btn btn-outline-danger">detail tugas</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Progress -->
+            <div class="mt-5">
+                <h4 class="mb-3">progress tugas</h4>
+                <div class="progress mb-3">
+                    <div class="progress-bar bg-success" role="progressbar" style="width: 33%" aria-valuenow="33" aria-valuemin="0" aria-valuemax="100">tugas 1</div>
+                    <div class="progress-bar bg-warning" role="progressbar" style="width: 33%" aria-valuenow="33" aria-valuemin="0" aria-valuemax="100">tugas 2</div>
+                    <div class="progress-bar bg-danger" role="progressbar" style="width: 34%" aria-valuenow="34" aria-valuemin="0" aria-valuemax="100">tugas 3</div>
+                </div>
+                <div class="alert alert-info">
+                    <i class="fas fa-info-circle me-2"></i>total progress: 33% (1 dari 3 tugas selesai)
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tentang -->
+    <section id="about" class="py-5 bg-light">
+        <div class="container">
+            <h2 class="text-center mb-5">tentang saya</h2>
+            <div class="row">
+                <div class="col-md-4 text-center">
+                    <img src="https://via.placeholder.com/150" alt="Foto Profil" class="profile-img rounded-circle mb-3">
+                    <h3>tedi fahri</h3>
+                    <p class="text-muted">nisn: 123456789</p>
+                    <div class="d-flex justify-content-center gap-3">
+                        <a href="https://www.facebook.com/profile.php?id=100087759317001" class="text-primary"><i class="fab fa-facebook fa-lg"></i></a>
+                        <a href="https://www.tiktok.com/@fhri_s.cgpt?_r=1&_d" class="text-info"><i class="fab fa-tiktok fa-lg"></i></a>
+                        <a href="https://www.instagram.com/tfhri_?igsh=d2RyODh2Y3cwM2pm" class="text-danger"><i class="fab fa-instagram fa-lg"></i></a>
+                        <a href="https://github.com/dashboard" class="text-dark"><i class="fab fa-github fa-lg"></i></a>
+                    </div>
+                </div>
+                <div class="col-md-8">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">biodata lengkap</h5>
+                            <table class="table">
+                                <tr>
+                                    <th width="30%">mapel kelas</th>
+                                    <td>informatika </td>
+                                </tr>
+                                <tr>
+                                    <th>sekolah</th>
+                                    <td>SMK karya bhakti brebes</td>
+                                </tr>
+                                <tr>
+                                    <th>semester</th>
+                                    <td>2</td>
+                                </tr>
+                                <tr>
+                                    <th>kelas</th>
+                                    <td>PPLG 1</td>
+                                </tr>
+                                <tr>
+                                    <th>guru</th>
+                                    <td>bu salis, bu riva, bu fidella, pa riski
+                               </td>
+                                </tr>
+                            </table>
+                            <p class="card-text">saya adalah pelajar yang antusias dalam mempelajari pengembangan web modern. tugas ini merupakan bagian dari pem web yang fokus pada penggunaan framework css seperti bootstrap.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-4">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <h5><i class="fas fa-tasks me-2"></i>tugas atmin</h5>
+                    <p class="mb-0">halaman ini dibuat untuk belajar atmin saja, jika serius liat fesnuk.</p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <p class="mb-0">&copy; 2025 fahri. all rights reserved.</p>
+                    <p class="mb-0">last updated: sen, 21 april 2025</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,78 @@
+<!DOCTYPE html><html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>otp | nutrilife</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+      background-color: #f0f2f5;
+    }
+    .container {
+      max-width: 400px 100px;
+      margin: 94px auto;
+      background-color: #fff;
+      border-radius: 8px;
+      padding: 34px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    h2 {
+      text-align: center;
+      color: #1877f2;
+    }
+    p {
+      font-size: 14px;
+      color: #555;
+      text-align: center;
+    }
+    input[type="text"] {
+      width: 97%;
+      padding: 12px;
+      margin-top: 16px;
+      margin-bottom: 20px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+      font-size: 16px;
+      text-align: center;
+      letter-spacing: 4px;
+    }
+    .btn {
+      width: 100%;
+      padding: 12px;
+      background-color: #1877f2;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+    .btn:hover {
+      background-color: #165fbd;
+    }
+    .link {
+      display: block;
+      text-align: center;
+      margin-top: 16px;
+      font-size: 14px;
+      color: #1877f2;
+      text-decoration: none;
+    }
+    .link:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>kode otp</h2>
+    <p>kami telah mengirimkan kode ke email atau nomor Anda. Masukkan kode tersebut di bawah ini.</p>
+    <form action="reset.html" method="get">
+      <input type="text" name="kode" maxlength="6" placeholder="••••••" required>
+      <button type="submit" class="btn">lanjutkan</button>
+    </form>
+    <a href="verifikasi.html" class="link">kirim ulang kode</a>
+  </div>
+</body>
+</html>

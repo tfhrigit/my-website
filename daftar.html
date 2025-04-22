@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>daftar akun</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 400px;
+            margin: 50px auto;
+            padding: 20px;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        input, select {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+        }
+        button {
+            background-color: #1877f2;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <h2>buat akun | nutrilife</h2>
+    <form id="registerForm" onsubmit="return handleSubmit(event)">
+        <div class="form-group">
+            <input type="text" placeholder="Nama depan" required>
+        </div>
+        
+        <div class="form-group">
+            <input type="text" placeholder="Nama belakang" required>
+        </div>
+
+        <div class="form-group">
+            <input type="email" placeholder="Email" required>
+        </div>
+
+        <div class="form-group">
+            <input type="password" placeholder="Kata sandi baru" required>
+        </div>
+
+        <div class="form-group">
+            <label>tanggal lahir</label>
+            <input type="date" required>
+        </div>
+
+        <div class="form-group">
+            <label>jenis kelamin</label>
+            <select required>
+                <option value="">pilih</option>
+                <option value="male">laki-laki</option>
+                <option value="female">perempuan</option>
+            </select>
+        </div>
+
+        <button type="submit">daftar</button>
+    </form>
+
+    <script>
+        function handleSubmit(event) {
+            event.preventDefault();
+            alert('pendaftaran berhasil! mengarahkan ke halaman login...');
+            window.location.href = 'index.html'; // Ganti dengan nama halaman login Anda
+            return false;
+        }
+    </script>
+
+    <p>sudah punya akun? <a href="index.html">masuk di sini</a></p>
+</body>
+</html>

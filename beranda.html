@@ -1,0 +1,662 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>beranda | nutrilife</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #4e73df;
+            --secondary-color: #f8f9fc;
+            --accent-color: #2e59d9;
+        }
+        
+        body {
+            font-family: 'Nunito', sans-serif;
+            background-color: #f8f9fc;
+        }
+        
+        .sidebar {
+            background: linear-gradient(180deg, var(--primary-color) 0%, #224abe 100%);
+            min-height: 100vh;
+            color: white;
+            transition: all 0.3s;
+        }
+        
+        .sidebar .nav-link {
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 5px;
+            border-radius: 5px;
+            padding: 10px 15px;
+        }
+        
+        .sidebar .nav-link:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+            color: white;
+        }
+        
+        .sidebar .nav-link.active {
+            background-color: rgba(255, 255, 255, 0.2);
+            color: white;
+        }
+        
+        .sidebar .nav-link i {
+            margin-right: 10px;
+        }
+        
+        .topbar {
+            height: 70px;
+            box-shadow: 0 0.15rem 1.75rem 0 rgba(58, 59, 69, 0.15);
+            background-color: white;
+        }
+        
+        .card {
+            border: none;
+            border-radius: 10px;
+            box-shadow: 0 0.15rem 1.75rem 0 rgba(58, 59, 69, 0.1);
+            transition: transform 0.3s;
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .card-header {
+            background-color: white;
+            border-bottom: 1px solid #e3e6f0;
+            font-weight: 600;
+            border-radius: 10px 10px 0 0 !important;
+        }
+        
+        .bg-primary {
+            background-color: var(--primary-color) !important;
+        }
+        
+        .chart-area {
+            position: relative;
+            height: 250px;
+        }
+        
+        .user-profile img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+        
+        .dropdown-menu {
+            border: none;
+            box-shadow: 0 0.15rem 1.75rem 0 rgba(58, 59, 69, 0.2);
+        }
+        
+        .notification-badge {
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            font-size: 10px;
+        }
+        
+        .search-bar {
+            width: 300px;
+            transition: width 0.3s;
+        }
+        
+        .search-bar:focus {
+            width: 400px;
+        }
+        
+        .welcome-message {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #5a5c69;
+        }
+        
+        .quick-actions .btn {
+            border-radius: 20px;
+            padding: 10px 20px;
+            margin: 5px;
+            box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+        }
+        
+        .recent-activity .activity-item {
+            border-left: 3px solid var(--primary-color);
+            padding-left: 15px;
+            margin-bottom: 15px;
+        }
+        
+        .activity-time {
+            font-size: 0.8rem;
+            color: #858796;
+        }
+    </style>
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <!-- Sidebar -->
+            <nav id="sidebar" class="col-md-3 col-lg-2 d-md-block sidebar collapse">
+                <div class="position-sticky pt-3">
+                    <div class="text-center mb-4">
+                        <h4>nutrilife | fahri</h4>
+                    </div>
+                    
+                    <ul class="nav flex-column">
+                        <li class="nav-item">
+                            <a class="nav-link active" href="beranda.html">
+                                <i class="fas fa-fw fa-home"></i>
+                                beranda
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="dashboard.html">
+                                <i class="fas fa-fw fa-chart-line"></i>
+                                dashboard 
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="kalender.html">
+                                <i class="fas fa-fw fa-calendar"></i>
+                                kalender
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="pesan.html">
+                                <i class="fas fa-fw fa-envelope"></i>
+                                pesan
+                                <span class="badge bg-danger notification-badge">99+</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">
+                                <i class="fas fa-fw fa-tasks"></i>
+                                tugas
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">
+                                <i class="fas fa-fw fa-users"></i>
+                                tim
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">
+                                <i class="fas fa-fw fa-cog"></i>
+                                pengaturan 
+                            </a>
+                        </li>
+                    </ul>
+                    
+                    <div class="position-absolute bottom-0 start-0 p-3 w-100">
+                        <div class="card bg-primary text-white">
+                            <div class="card-body text-center">
+                                <h6 class="card-title">butuh bantuan?</h6>
+                                <p class="card-text small">hubungi tim dukungan kami</p>
+                                <button class="btn btn-light btn-sm">hubungi</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+            
+            <!-- Main Content -->
+            <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+                <!-- Topbar -->
+                <nav class="navbar topbar navbar-expand navbar-light mb-4 static-top">
+                    <div class="container-fluid">
+                        <!-- Sidebar Toggle -->
+                        <button class="btn btn-link d-md-none rounded-circle me-3" id="sidebarToggle">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        
+                        <!-- Search Bar -->
+                        <form class="d-none d-sm-inline-block form-inline me-auto ms-md-3 my-2 my-md-0 mw-100 navbar-search">
+                            <div class="input-group">
+                                <input type="text" class="form-control bg-light border-0 small search-bar" placeholder="Cari..." aria-label="Search">
+                                <button class="btn btn-primary" type="button">
+                                    <i class="fas fa-search fa-sm"></i>
+                                </button>
+                            </div>
+                        </form>
+                        
+                        <!-- Topbar Navbar -->
+                        <ul class="navbar-nav ms-auto">
+                            <!-- Nav Item - Search Dropdown (Visible Only XS) -->
+                            <li class="nav-item dropdown no-arrow d-sm-none">
+                                <a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <i class="fas fa-search fa-fw"></i>
+                                </a>
+                            </li>
+                            
+                            <!-- Nav Item - Alerts -->
+                            <li class="nav-item dropdown no-arrow mx-1">
+                                <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <i class="fas fa-bell fa-fw"></i>
+                                    <!-- Counter - Alerts -->
+                                    <span class="badge badge-danger badge-counter">3+</span>
+                                </a>
+                            </li>
+                            
+                            <!-- Nav Item - Messages -->
+                            <li class="nav-item dropdown no-arrow mx-1">
+                                <a class="nav-link dropdown-toggle" href="#" id="messagesDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <i class="fas fa-envelope fa-fw"></i>
+                                    <!-- Counter - Messages -->
+                                    <span class="badge badge-danger badge-counter">7</span>
+                                </a>
+                            </li>
+                            
+                            <div class="topbar-divider d-none d-sm-block"></div>
+                            
+                            <!-- Nav Item - User Information -->
+                            <li class="nav-item dropdown no-arrow">
+                                <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <span class="me-2 d-none d-lg-inline text-gray-600 small">Admin User</span>
+                                    <img class="img-profile rounded-circle" src="https://source.unsplash.com/QAB-WJcbgJk/60x60" alt="Profile">
+                                </a>
+                                <!-- Dropdown - User Information -->
+                                <ul class="dropdown-menu dropdown-menu-end shadow" aria-labelledby="userDropdown">
+                                    <li><a class="dropdown-item" href="#">
+                                        <i class="fas fa-user fa-sm fa-fw me-2 text-gray-400"></i>
+                                        profil 
+                                    </a></li>
+                                    <li><a class="dropdown-item" href="#">
+                                        <i class="fas fa-cogs fa-sm fa-fw me-2 text-gray-400"></i>
+                                        pengaturan
+                                    </a></li>
+                                    <li><a class="dropdown-item" href="#">
+                                        <i class="fas fa-list fa-sm fa-fw me-2 text-gray-400"></i>
+                                        log aktifitas 
+                                    </a></li>
+                                    <li><hr class="dropdown-divider"></li>
+                                    <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#logoutModal">
+                                        <i class="fas fa-sign-out-alt fa-sm fa-fw me-2 text-gray-400"></i>
+                                        logout
+                                    </a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+                
+                <!-- Page Content -->
+                <div class="container-fluid">
+                    <!-- Page Heading -->
+                    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+                        <h1 class="welcome-message mb-0">selamat datang kembali, fahri!</h1>
+                        <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">
+                            <i class="fas fa-download fa-sm text-white-50"></i> generate report
+                        </a>
+                    </div>
+                    
+                    <!-- Content Row -->
+                    <div class="row">
+                        <!-- Earnings (Monthly) Card Example -->
+                        <div class="col-xl-3 col-md-6 mb-4">
+                            <div class="card border-left-primary shadow h-100 py-2">
+                                <div class="card-body">
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col me-2">
+                                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                                                pendapatann (bulanan)</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800">$40,000</div>
+                                        </div>
+                                        <div class="col-auto">
+                                            <i class="fas fa-calendar fa-2x text-gray-300"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Earnings (Annual) Card Example -->
+                        <div class="col-xl-3 col-md-6 mb-4">
+                            <div class="card border-left-success shadow h-100 py-2">
+                                <div class="card-body">
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col me-2">
+                                            <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
+                                                pendapatan (tahunan)</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800">$500,000</div>
+                                        </div>
+                                        <div class="col-auto">
+                                            <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Tasks Card Example -->
+                        <div class="col-xl-3 col-md-6 mb-4">
+                            <div class="card border-left-info shadow h-100 py-2">
+                                <div class="card-body">
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col me-2">
+                                            <div class="text-xs font-weight-bold text-info text-uppercase mb-1">tugas
+                                            </div>
+                                            <div class="row no-gutters align-items-center">
+                                                <div class="col-auto">
+                                                    <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">50%</div>
+                                                </div>
+                                                <div class="col">
+                                                    <div class="progress progress-sm mr-2">
+                                                        <div class="progress-bar bg-info" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-auto">
+                                            <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Pending Requests Card Example -->
+                        <div class="col-xl-3 col-md-6 mb-4">
+                            <div class="card border-left-warning shadow h-100 py-2">
+                                <div class="card-body">
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col me-2">
+                                            <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
+                                                permintaan tertunda</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800">18</div>
+                                        </div>
+                                        <div class="col-auto">
+                                            <i class="fas fa-comments fa-2x text-gray-300"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Content Row -->
+                    <div class="row">
+                        <!-- Area Chart -->
+                        <div class="col-xl-8 col-lg-7">
+                            <div class="card shadow mb-4">
+                                <!-- Card Header - Dropdown -->
+                                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                                    <h6 class="m-0 font-weight-bold text-primary">ringkasan pendapatan</h6>
+                                    <div class="dropdown no-arrow">
+                                        <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+                                            <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
+                                        </a>
+                                        <ul class="dropdown-menu dropdown-menu-end shadow" aria-labelledby="dropdownMenuLink">
+                                            <li><a class="dropdown-item" href="#">aksi</a></li>
+                                            <li><a class="dropdown-item" href="#">aksi lain</a></li>
+                                            <li><a class="dropdown-item" href="#"> sesuatu yang lain</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <!-- Card Body -->
+                                <div class="card-body">
+                                    <div class="chart-area">
+                                        <!-- Placeholder for chart -->
+                                        <canvas id="myAreaChart"></canvas>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Pie Chart -->
+                        <div class="col-xl-4 col-lg-5">
+                                          <div class="card shadow mb-4">
+                                <!-- Card Header - Dropdown -->
+                                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                                    <h6 class="m-0 font-weight-bold text-primary">sumber pendapatan</h6>
+                                    <div class="dropdown no-arrow">
+                                        <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+                                            <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
+                                        </a>
+                                        <ul class="dropdown-menu dropdown-menu-end shadow" aria-labelledby="dropdownMenuLink">
+                                            <li><a class="dropdown-item" href="#">aksi</a></li>
+                                            <li><a class="dropdown-item" href="#">aksi lain</a></li>
+                                            <li><a class="dropdown-item" href="#">sesuai yang lain</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <!-- Card Body -->
+                                <div class="card-body">
+                                    <div class="chart-pie pt-4 pb-2">
+                                        <!-- Placeholder for pie chart -->
+                                        <canvas id="myPieChart"></canvas>
+                                    </div>
+                                    <div class="mt-4 text-center small">
+                                        <span class="me-2">
+                                            <i class="fas fa-circle text-primary"></i> langsung
+                                        </span>
+                                        <span class="me-2">
+                                            <i class="fas fa-circle text-success"></i> sosial
+                                        </span>
+                                        <span class="me-2">
+                                            <i class="fas fa-circle text-info"></i> referral 
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Quick Actions -->
+                    <div class="row mb-4">
+                        <div class="col-12">
+                            <div class="card shadow">
+                                <div class="card-header py-3">
+                                    <h6 class="m-0 font-weight-bold text-primary">aksi cepat</h6>
+                                </div>
+                                <div class="card-body text-center quick-actions">
+                                    <button class="btn btn-primary">
+                                        <i class="fas fa-plus me-2"></i>tambah proyek
+                                    </button>
+                                    <button class="btn btn-success">
+                                        <i class="fas fa-file-export me-2"></i>ekspor data
+                                    </button>
+                                    <button class="btn btn-info">
+                                        <i class="fas fa-users me-2"></i>undang anggota
+                                    </button>
+                                    <button class="btn btn-warning text-white">
+                                        <i class="fas fa-bell me-2"></i>buat pengumuman 
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Recent Activity -->
+                    <div class="row">
+                        <div class="col-lg-6 mb-4">
+                            <div class="card shadow mb-4">
+                                <div class="card-header py-3">
+                                    <h6 class="m-0 font-weight-bold text-primary">aktivitas terkini</h6>
+                                </div>
+                                <div class="card-body recent-activity">
+                                    <div class="activity-item">
+                                        <div class="d-flex justify-content-between">
+                                            <h6 class="mb-1">pembaruan sistem</h6>
+                                            <small class="activity-time">Baru saja</small>
+                                        </div>
+                                        <p class="small mb-0">versi terbaru sistem telah diinstal (v2.3.5)</p>
+                                    </div>
+                                    
+                                    <div class="activity-item">
+                                        <div class="d-flex justify-content-between">
+                                            <h6 class="mb-1">pembayaran baru</h6>
+                                            <small class="activity-time">30 menit lalu</small>
+                                        </div>
+                                        <p class="small mb-0">pembayaran sebesar $250 diterima dari pelanggan A</p>
+                                    </div>
+                                    
+                                    <div class="activity-item">
+                                        <div class="d-flex justify-content-between">
+                                            <h6 class="mb-1">tugas selesai</h6>
+                                            <small class="activity-time">2 jam lalu</small>
+                                        </div>
+                                        <p class="small mb-0">tugas "desain UI" telah diselesaikan oleh fahri</p>
+                                    </div>
+                                    
+                                    <div class="activity-item">
+                                        <div class="d-flex justify-content-between">
+                                            <h6 class="mb-1">pertemuan baru</h6>
+                                            <small class="activity-time">5 jam lalu</small>
+                                        </div>
+                                        <p class="small mb-0">pertemuan dijadwalkan untuk hari jumat pukul 10:00</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Team Members -->
+                        <div class="col-lg-6 mb-4">
+                            <div class="card shadow mb-4">
+                                <div class="card-header py-3">
+                                    <h6 class="m-0 font-weight-bold text-primary">anggota tim</h6>
+                                </div>
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-lg-6 mb-4">
+                                            <div class="card">
+                                                <div class="card-body text-center">
+                                                    <img class="rounded-circle mb-3" src="https://source.unsplash.com/QAB-WJcbgJk/100x100" width="100" height="100" alt="Team Member">
+                                                    <h5 class="card-title">fahri v7</h5>
+                                                    <p class="card-text text-muted small">developer</p>
+                                                    <a href="#" class="btn btn-sm btn-primary">profil</a>
+                                                    <a href="#" class="btn btn-sm btn-outline-primary">pesan</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6 mb-4">
+                                            <div class="card">
+                                                <div class="card-body text-center">
+                                                    <img class="rounded-circle mb-3" src="https://source.unsplash.com/mEZ3PoFGs_k/100x100" width="100" height="100" alt="Team Member">
+                                                    <h5 class="card-title">lia</h5>
+                                                    <p class="card-text text-muted small">management</p>
+                                                    <a href="#" class="btn btn-sm btn-primary">profil</a>
+                                                    <a href="#" class="btn btn-sm btn-outline-primary">pesan</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6 mb-4">
+                                            <div class="card">
+                                                <div class="card-body text-center">
+                                                    <img class="rounded-circle mb-3" src="https://source.unsplash.com/7YVZYZeITc8/100x100" width="100" height="100" alt="Team Member">
+                                                    <h5 class="card-title">meca</h5>
+                                                    <p class="card-text text-muted small">custom profil</p>
+                                                    <a href="#" class="btn btn-sm btn-primary">profil</a>
+                                                    <a href="#" class="btn btn-sm btn-outline-primary">pesan</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6 mb-4">
+                                            <div class="card">
+                                                <div class="card-body text-center">
+                                                    <img class="rounded-circle mb-3" src="https://source.unsplash.com/iFgRcqHznqg/100x100" width="100" height="100" alt="Team Member">
+                                                    <h5 class="card-title">tedi</h5>
+                                                    <p class="card-text text-muted small">deployment</p>
+                                                    <a href="#" class="btn btn-sm btn-primary">profil</a>
+                                                    <a href="#" class="btn btn-sm btn-outline-primary">pesan</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+    
+    <!-- Logout Modal-->
+    <div class="modal fade" id="logoutModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">siap untuk keluar?</h5>
+                    <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">pilih "logout" di bawah jika anda siap untuk mengakhiri sesi anda saat ini.</div>
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" type="button" data-bs-dismiss="modal">batal</button>
+                    <a class="btn btn-primary" href="index.html">logout</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.1/chart.min.js"></script>
+    <script>
+        // Toggle sidebar
+        document.getElementById('sidebarToggle').addEventListener('click', function() {
+            document.getElementById('sidebar').classList.toggle('collapsed');
+        });
+        
+        // Area Chart Example
+        var ctx = document.getElementById("myAreaChart");
+        var myLineChart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: ["jan", "feb", "mar", "apr", "may", "jun", "jul", "aug", "sep", "oct", "nov", "dec"],
+                datasets: [{
+                    label: "pendapatan",
+                    lineTension: 0.3,
+                    backgroundColor: "rgba(78, 115, 223, 0.05)",
+                    borderColor: "rgba(78, 115, 223, 1)",
+                    pointRadius: 3,
+                    pointBackgroundColor: "rgba(78, 115, 223, 1)",
+                    pointBorderColor: "rgba(78, 115, 223, 1)",
+                    pointHoverRadius: 3,
+                    pointHoverBackgroundColor: "rgba(78, 115, 223, 1)",
+                    pointHoverBorderColor: "rgba(78, 115, 223, 1)",
+                    pointHitRadius: 10,
+                    pointBorderWidth: 2,
+                    data: [0, 10000, 5000, 15000, 10000, 20000, 15000, 25000, 20000, 30000, 25000, 40000],
+                }],
+            },
+            options: {
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        display: false
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+        
+        // Pie Chart Example
+        var ctx = document.getElementById("myPieChart");
+        var myPieChart = new Chart(ctx, {
+            type: 'doughnut',
+            data: {
+                labels: ["langsung", "sosial", "referral"],
+                datasets: [{
+                    data: [55, 30, 15],
+                    backgroundColor: ['#4e73df', '#1cc88a', '#36b9cc'],
+                    hoverBackgroundColor: ['#2e59d9', '#17a673', '#2c9faf'],
+                    hoverBorderColor: "rgba(234, 236, 244, 1)",
+                }],
+            },
+            options: {
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        display: false
+                    }
+                },
+                cutout: '80%',
+            },
+        });
+    </script>
+</body>
+</html>

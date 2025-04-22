@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>reset sandi | nutrilife</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      background: #f1f1f1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+    }
+    .reset-box {
+      background: white;
+      padding: 30px;
+      border-radius: 10px;
+      width: 90%;
+      max-width: 400px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
+    h2 {
+      margin-bottom: 20px;
+      text-align: center;
+    }
+    input[type="password"] {
+      width: 93%;
+      padding: 12px;
+      margin: 10px 0;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+    }
+    button {
+      width: 100%;
+      padding: 12px;
+      background: #1877f2;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #155ec4;
+    }
+  </style>
+</head>
+<body>
+  <div class="reset-box">
+    <h2>reset kata sandi</h2>
+    <form id="resetForm">
+      <input type="password" id="newPassword" placeholder="Kata sandi baru" required>
+      <input type="password" id="confirmPassword" placeholder="Konfirmasi sandi" required>
+      <button type="submit">simpan</button>
+    </form>
+  </div>
+
+  <script>
+    document.getElementById('resetForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const newPass = document.getElementById('newPassword').value;
+      const confirmPass = document.getElementById('confirmPassword').value;
+
+      if (newPass !== confirmPass) {
+        alert("kata sandi tidak cocok!");
+        return;
+      }
+
+      // Simulasi penyimpanan sandi baru (bisa disesuaikan dengan backend kamu)
+      alert("kata sandi berhasil diubah!");
+      window.location.href = "index.html"; // ganti dengan halaman login kamu
+    });
+  </script>
+</body>
+</html>
